@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Level;
-
+import java.io.InputStreamReader;
+import java.io.Reader;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+
 
 /**
  * Class representing a yml file.
@@ -72,9 +74,10 @@ public class YamlFile {
 	 * Applies the defaults from an embedded resource where necessary.
 	 * @param fileName the file path
 	 */
-	public void setDefaults(String fileName) {
+	public void setDefaults(String fileName) throws IOException {
 		
-		InputStream defConfigStream = plugin.getResource(fileName + ".yml");
+		Reader defConfigStream = new InputStreamReader(plugin.getResource(fileName + ".yml"), "UTF8");
+		
 		if (defConfigStream != null) {
 			YamlConfiguration defConfig = YamlConfiguration
 				.loadConfiguration(defConfigStream);
