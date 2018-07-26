@@ -469,40 +469,40 @@ public class TreasureManager extends TreasureDataFacade {
 			// water and lava
 		case LAVA:
 		case WATER:
-		case STATIONARY_LAVA:
-		case STATIONARY_WATER:
+		case LEGACY_STATIONARY_LAVA:
+		case LEGACY_STATIONARY_WATER:
 
 			// plants
-		case LEAVES:
+		case LEGACY_LEAVES:
 		case CACTUS:
 			
 			// translucent blocks
 		case GLASS:
-		case MOB_SPAWNER:
+		case LEGACY_MOB_SPAWNER:
 		case SNOW:
 		case ICE:
-		case FENCE:
+		case LEGACY_FENCE:
 		case CAKE:
-		case BED:
+		case LEGACY_BED:
 		case GLOWSTONE:
 		case ANVIL:
 		case BEACON:
 		case CHEST:
 		case SIGN:
-		case SIGN_POST:
+		case LEGACY_SIGN_POST:
 			// slabs
-		case STEP:
-		case WOOD_STEP:
+		case LEGACY_STEP:
+		case LEGACY_WOOD_STEP:
 			// stairs
-		case WOOD_STAIRS:
+		case LEGACY_WOOD_STAIRS:
 		case COBBLESTONE_STAIRS:
 		case BRICK_STAIRS:
-		case SMOOTH_STAIRS:
+		case LEGACY_SMOOTH_STAIRS:
 		case NETHER_BRICK_STAIRS:
 		case SANDSTONE_STAIRS:
-		case SPRUCE_WOOD_STAIRS:
-		case BIRCH_WOOD_STAIRS:
-		case JUNGLE_WOOD_STAIRS:
+		case LEGACY_SPRUCE_WOOD_STAIRS:
+		case LEGACY_BIRCH_WOOD_STAIRS:
+		case LEGACY_JUNGLE_WOOD_STAIRS:
 		case QUARTZ_STAIRS:
 			return false;
 		default:
@@ -728,22 +728,22 @@ public class TreasureManager extends TreasureDataFacade {
 		
 	}
 	
-	private static HashSet<Byte> invisibleBlocks;
+	private static HashSet<Material> invisibleBlocks;
 	
-	private static HashSet<Byte> getInvisibleBlocks() {
+	private static HashSet<Material> getInvisibleBlocks() {
 		if(invisibleBlocks == null) {
-			invisibleBlocks  = new HashSet<Byte>();
+			invisibleBlocks  = new HashSet<Material>();
 			Material[] mats = Material.values();
 			for (Material mat : mats) {
 				if(mat.isTransparent()) {
-					invisibleBlocks.add((byte) mat.getId());
+					invisibleBlocks.add(mat);
 				}
 			}
 		}
 		
 		return invisibleBlocks;
 	}
-
+	
 	public static Block getTargetedContainerBlock(Player player) {
 		Block block = player.getTargetBlock(getInvisibleBlocks(), 8);
 		if(block == null || !(block.getState() instanceof InventoryHolder)) {
@@ -835,6 +835,9 @@ public class TreasureManager extends TreasureDataFacade {
 			while(ig.hasNext()) {
 				String group = ig.next();
 				ITreasureChestGroup tcgroup = getGroup(group);
+				if (tcgroup == null) {
+					continue;
+				}
 				Set<Location> locs = tcgroup.getLocations();
 				Iterator<Location> il = locs.iterator();
 				while(il.hasNext()) {

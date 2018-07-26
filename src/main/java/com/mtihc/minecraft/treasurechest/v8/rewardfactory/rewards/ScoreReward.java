@@ -63,8 +63,8 @@ public class ScoreReward implements IReward {
 		int score = getScore();
 		Objective objective = getObjective();
 		
-		int current = objective.getScore(player).getScore();
-		objective.getScore(player).setScore(current + score);
+		int current = objective.getScore(player.getName()).getScore();
+		objective.getScore(player.getName()).setScore(current + score);
 	}
 
 }

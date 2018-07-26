@@ -36,7 +36,7 @@ public class RegionCommand extends SimpleCommand {
 		USE_META_DATA;
 	}
 	
-	private final EnumSet<Material> ContainerBlocks = EnumSet.of(Material.DISPENSER, Material.CHEST, Material.FURNACE, Material.BURNING_FURNACE, Material.TRAPPED_CHEST, Material.HOPPER, Material.DROPPER);
+	private final EnumSet<Material> ContainerBlocks = EnumSet.of(Material.DISPENSER, Material.CHEST, Material.FURNACE, Material.LEGACY_BURNING_FURNACE, Material.TRAPPED_CHEST, Material.HOPPER, Material.DROPPER);
 
 	private TreasureManager manager;
 
@@ -125,7 +125,7 @@ public class RegionCommand extends SimpleCommand {
 			filter = args[1];
 		}
 		Player player = (Player) sender;
-		schudleFindContainerBlocks(player, TaskType.GROUP_ADD, filter);
+		schudleFindContainerBlocks(player, TaskType.GROUP_ADD, name, filter);
 	}
 	
 	@Command(aliases = { "group-remove" }, args = "<group name> [block,white-list]", desc = "Remove all treasure in the selected region from a group", help = { "" })
@@ -293,7 +293,7 @@ public class RegionCommand extends SimpleCommand {
 						Iterator<Material> i = filterList.iterator();
 						while (i.hasNext()) {
 							Material checkMaterial = i.next();
-							if (world.getBlockTypeIdAt(x,y,z) == checkMaterial.getId()) {
+							if (world.getBlockAt(x,y,z).getType() == checkMaterial) {
 								found.add(new Location(world,x,y,z));
 								break;
 							}
