@@ -131,11 +131,10 @@ class TreasureChestListener implements Listener {
 	}
 	
 	
-	
-	
+	/* ****** DISABLING this completely, because onBlockPowered caused massive lag on our server and we don't use dispenser or dropper. kaahne
 	
 	@EventHandler(priority=EventPriority.HIGH)
-    public void onBlockPowered(BlockPhysicsEvent event) {
+        public void onBlockPowered(BlockPhysicsEvent event) {
 		Block block = event.getBlock();
 		switch (block.getType()) {
 		case DISPENSER:
@@ -185,7 +184,7 @@ class TreasureChestListener implements Listener {
 			// will dispense on it's own
 			// no need for dropper.drop()
 		}
-    }
+        }  END OF COMMENT */
 	
 	private boolean isInventoryEmpty(Inventory inventory) {
 		int n = inventory.getSize();
