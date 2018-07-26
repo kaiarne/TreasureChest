@@ -81,7 +81,7 @@ public class YamlFile {
 		
 		if (defConfigStream != null) {
 			YamlConfiguration defConfig = YamlConfiguration
-				.loadConfiguration(new InputStreamReader(defConfigStream));
+				.loadConfiguration(defConfigStream);
 			config.options().copyDefaults(true);
 			config.setDefaults(defConfig);
 			save();
