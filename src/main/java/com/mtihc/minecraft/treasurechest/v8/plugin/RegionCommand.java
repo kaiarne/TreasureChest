@@ -36,7 +36,7 @@ public class RegionCommand extends SimpleCommand {
 		USE_META_DATA;
 	}
 	
-	private final EnumSet<Material> ContainerBlocks = EnumSet.of(Material.DISPENSER, Material.CHEST, Material.FURNACE, Material.BURNING_FURNACE, Material.TRAPPED_CHEST, Material.HOPPER, Material.DROPPER);
+	private final EnumSet<Material> ContainerBlocks = EnumSet.of(Material.DISPENSER, Material.CHEST, Material.FURNACE, Material.LEGACY_BURNING_FURNACE, Material.TRAPPED_CHEST, Material.HOPPER, Material.DROPPER);
 
 	private TreasureManager manager;
 

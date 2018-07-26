@@ -469,40 +469,40 @@ public class TreasureManager extends TreasureDataFacade {
 			// water and lava
 		case LAVA:
 		case WATER:
-		case STATIONARY_LAVA:
-		case STATIONARY_WATER:
+		case LEGACY_STATIONARY_LAVA:
+		case LEGACY_STATIONARY_WATER:
 
 			// plants
-		case LEAVES:
+		case LEGACY_LEAVES:
 		case CACTUS:
 			
 			// translucent blocks
 		case GLASS:
-		case MOB_SPAWNER:
+		case LEGACY_MOB_SPAWNER:
 		case SNOW:
 		case ICE:
-		case FENCE:
+		case LEGACY_FENCE:
 		case CAKE:
-		case BED:
+		case LEGACY_BED:
 		case GLOWSTONE:
 		case ANVIL:
 		case BEACON:
 		case CHEST:
 		case SIGN:
-		case SIGN_POST:
+		case LEGACY_SIGN_POST:
 			// slabs
-		case STEP:
-		case WOOD_STEP:
+		case LEGACY_STEP:
+		case LEGACY_WOOD_STEP:
 			// stairs
-		case WOOD_STAIRS:
+		case LEGACY_WOOD_STAIRS:
 		case COBBLESTONE_STAIRS:
 		case BRICK_STAIRS:
-		case SMOOTH_STAIRS:
+		case LEGACY_SMOOTH_STAIRS:
 		case NETHER_BRICK_STAIRS:
 		case SANDSTONE_STAIRS:
-		case SPRUCE_WOOD_STAIRS:
-		case BIRCH_WOOD_STAIRS:
-		case JUNGLE_WOOD_STAIRS:
+		case LEGACY_SPRUCE_WOOD_STAIRS:
+		case LEGACY_BIRCH_WOOD_STAIRS:
+		case LEGACY_JUNGLE_WOOD_STAIRS:
 		case QUARTZ_STAIRS:
 			return false;
 		default:
